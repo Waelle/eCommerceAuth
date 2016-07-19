@@ -44,6 +44,23 @@ namespace SiteECommerce.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult AjouterProduit(int id)
+        {
+            Commande commande = (Commande)Session["panier"];
+            if (commande == null)
+            {
+                commande = new Commande();
+                Session["panier"] = commande;
+            }
+
+            commande.AjouterACommande(db.Produits.Find(id));
+
+            return RedirectToAction("Index");
+            //db.Commandes.Add(commande);
+            //db.SaveChanges();
+        }
+
         // POST: Commandes/Create
         // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
