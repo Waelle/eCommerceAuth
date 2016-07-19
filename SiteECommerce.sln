@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteECommerceMVC", "SiteECommerce\SiteECommerceMVC.csproj", "{8B1A0D42-C3FD-4EBA-A198-432E866849E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteECommerce.Metier", "SiteECommerce.Metier\SiteECommerce.Metier.csproj", "{BEF2A893-A693-49DE-A9D6-6E9EC146F571}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B1A0D42-C3FD-4EBA-A198-432E866849E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B1A0D42-C3FD-4EBA-A198-432E866849E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B1A0D42-C3FD-4EBA-A198-432E866849E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B1A0D42-C3FD-4EBA-A198-432E866849E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEF2A893-A693-49DE-A9D6-6E9EC146F571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEF2A893-A693-49DE-A9D6-6E9EC146F571}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEF2A893-A693-49DE-A9D6-6E9EC146F571}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEF2A893-A693-49DE-A9D6-6E9EC146F571}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
