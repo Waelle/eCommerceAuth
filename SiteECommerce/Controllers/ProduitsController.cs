@@ -125,6 +125,23 @@ namespace SiteECommerce.Mvc.Controllers
             return RedirectToAction("Index");
         }
 
+        [ActionName("AjouterProduit")]
+        public ActionResult AjouterProduit(int id)
+        {
+            Commande commande = (Commande)Session["panier"];
+            if (commande == null)
+            {
+                commande = new Commande();
+                Session["panier"] = commande;
+            }
+
+            commande.AjouterACommande(db.Produits.Find(id));
+           db.Commandes.Add(commande);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

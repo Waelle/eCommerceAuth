@@ -10,6 +10,10 @@ namespace SiteECommerce.Metier
 {
     public class Commande
     {
+        public Commande()
+        {
+           Produits=new List<Produit>(); 
+        }
         [Key]
         public int Id { get; set; }
         public int Quantite { get; set; }
@@ -21,10 +25,11 @@ namespace SiteECommerce.Metier
 
 
         public virtual ICollection<Produit> Produits { get; set; }
-
+        
 
         public void AjouterACommande(Produit produit)
         {
+            
             Produits.Add(produit);
             /// calcule du prix total 
             PrixTotal += produit.PrixProduit;

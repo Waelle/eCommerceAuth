@@ -60,9 +60,12 @@
                 @Html.DisplayFor(modelItem => item.Quantite)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.IdProduit }) |
-                @Html.ActionLink("Details", "Details", new { id = item.IdProduit }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IdProduit })
+
+                @*@Html.ActionLink("Ajouter au panier", )*@
+                @Html.ActionLink("Edit", "Edit", new {id = item.IdProduit}) |
+                @Html.ActionLink("Details", "Details", new {id = item.IdProduit}) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.IdProduit})
+                @Html.ActionLink( "ajouter au panier", "AjouterProduit", new { id = item.IdProduit })
             </td>
         </tr>
     }
