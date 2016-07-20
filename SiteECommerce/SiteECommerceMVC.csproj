@@ -215,6 +215,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MarquesController.cs" />
+    <Compile Include="Controllers\PanierProduitsController.cs" />
     <Compile Include="Controllers\ProduitsController.cs" />
     <Compile Include="DAL\SiteECommerceDbContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -231,6 +232,14 @@
     <Compile Include="Migrations\201607181503461_recup_valentin.cs" />
     <Compile Include="Migrations\201607181503461_recup_valentin.Designer.cs">
       <DependentUpon>201607181503461_recup_valentin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607200933066_nullClient.cs" />
+    <Compile Include="Migrations\201607200933066_nullClient.Designer.cs">
+      <DependentUpon>201607200933066_nullClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607200937457_RemoveNullClient.cs" />
+    <Compile Include="Migrations\201607200937457_RemoveNullClient.Designer.cs">
+      <DependentUpon>201607200937457_RemoveNullClient.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -328,6 +337,11 @@
     <Content Include="Views\Commandes\Details.cshtml" />
     <Content Include="Views\Commandes\Edit.cshtml" />
     <Content Include="Views\Commandes\Index.cshtml" />
+    <Content Include="Views\PanierProduits\Create.cshtml" />
+    <Content Include="Views\PanierProduits\Delete.cshtml" />
+    <Content Include="Views\PanierProduits\Details.cshtml" />
+    <Content Include="Views\PanierProduits\Edit.cshtml" />
+    <Content Include="Views\PanierProduits\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -356,6 +370,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607181503461_recup_valentin.resx">
       <DependentUpon>201607181503461_recup_valentin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607200933066_nullClient.resx">
+      <DependentUpon>201607200933066_nullClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607200937457_RemoveNullClient.resx">
+      <DependentUpon>201607200937457_RemoveNullClient.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
