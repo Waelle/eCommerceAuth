@@ -44,6 +44,23 @@ namespace SiteECommerce.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult AjouterProduit(int id)
+        {
+            Commande commande = (Commande)Session["panier"];
+            if (commande == null)
+            {
+                commande = new Commande();
+                Session["panier"] = commande;
+            }
+
+            commande.AjouterACommande(db.Produits.Find(id));
+
+            return RedirectToAction("Index");
+            //db.Commandes.Add(commande);
+            //db.SaveChanges();
+        }
+
         //[HttpPost]
         //public ActionResult AjouterProduit(int id)
         //{
