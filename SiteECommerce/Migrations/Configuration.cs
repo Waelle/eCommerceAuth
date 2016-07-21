@@ -1,20 +1,19 @@
-using SiteECommerce.Metier;
-
-namespace SiteECommerce.Mvc.Migrations
+namespace SiteECommerce.Migrations
 {
+    using Metier;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SiteECommerce.DAL.SiteECommerceDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<SiteECommerce.Models.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(SiteECommerce.DAL.SiteECommerceDbContext context)
+        protected override void Seed(SiteECommerce.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using SiteECommerce.Metier;
 
 namespace SiteECommerce.Models
 {
@@ -29,5 +30,18 @@ namespace SiteECommerce.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Produit> Produits { get; set; }
+        public DbSet<Marque> Marques { get; set; }
+        public DbSet<Categorie> Categories { get; set; }
+        public DbSet<Fournisseur> Fournisseurs { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Commande> Commandes { get; set; }
+        public DbSet<Facture> Factures { get; set; }
+        public DbSet<Commentaire> Commentaires { get; set; }
     }
+
+  
+       
+
 }

@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<SiteECommerce.Metier.Commande>
 
+
+
+
 @{
     ViewBag.Title = "Index";
 }
@@ -12,7 +15,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Client.Prenom)
+            @Html.DisplayNameFor(model => model.Produits)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Quantite)
@@ -26,7 +29,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Client.Prenom)
+            @Html.DisplayFor(modelItem => item.Produits);
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Quantite)

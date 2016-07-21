@@ -80,10 +80,10 @@ namespace SiteECommerce.Controllers
             }
 
             commande.AjouterACommande(db.Produits.Find(id));
-            //db.Commandes.Add(commande);
-            //    db.SaveChanges();
+            db.Commandes.Add(commande);
+            db.SaveChanges();
             
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Commandes");
            
         }
          

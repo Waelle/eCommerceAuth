@@ -20,7 +20,7 @@ namespace SiteECommerce.Metier
         public decimal PrixTotal { get; set; }
 
         [ForeignKey("Client")]
-        public int IdClient { get; set; }
+        public int? IdClient { get; set; }
         public virtual Client Client { get; set; }
 
 
@@ -31,7 +31,11 @@ namespace SiteECommerce.Metier
             Produits.Add(produit);
             //Produits.Add(produit);
             /// calcule du prix total 
-            PrixTotal += produit.PrixProduit;
+            Quantite++;
+            produit.Quantite--;
+            PrixTotal = Quantite * produit.PrixProduit;
+           
+
         }
     }
 }

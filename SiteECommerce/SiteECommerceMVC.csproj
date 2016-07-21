@@ -221,25 +221,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201607181230599_InitialCreate.cs" />
-    <Compile Include="Migrations\201607181230599_InitialCreate.Designer.cs">
-      <DependentUpon>201607181230599_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607181239339_initial.cs" />
-    <Compile Include="Migrations\201607181239339_initial.Designer.cs">
-      <DependentUpon>201607181239339_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607181503461_recup_valentin.cs" />
-    <Compile Include="Migrations\201607181503461_recup_valentin.Designer.cs">
-      <DependentUpon>201607181503461_recup_valentin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607200933066_nullClient.cs" />
-    <Compile Include="Migrations\201607200933066_nullClient.Designer.cs">
-      <DependentUpon>201607200933066_nullClient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607200937457_RemoveNullClient.cs" />
-    <Compile Include="Migrations\201607200937457_RemoveNullClient.Designer.cs">
-      <DependentUpon>201607200937457_RemoveNullClient.cs</DependentUpon>
+    <Compile Include="Migrations\201607210811148_initial.cs" />
+    <Compile Include="Migrations\201607210811148_initial.Designer.cs">
+      <DependentUpon>201607210811148_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -362,24 +346,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201607181230599_InitialCreate.resx">
-      <DependentUpon>201607181230599_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607181239339_initial.resx">
-      <DependentUpon>201607181239339_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607181503461_recup_valentin.resx">
-      <DependentUpon>201607181503461_recup_valentin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607200933066_nullClient.resx">
-      <DependentUpon>201607200933066_nullClient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607200937457_RemoveNullClient.resx">
-      <DependentUpon>201607200937457_RemoveNullClient.cs</DependentUpon>
-    </EmbeddedResource>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <EmbeddedResource Include="Migrations\201607210811148_initial.resx">
+      <DependentUpon>201607210811148_initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
