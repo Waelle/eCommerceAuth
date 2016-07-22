@@ -3,7 +3,7 @@ namespace SiteECommerce.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class Panier : DbMigration
     {
         public override void Up()
         {
@@ -39,20 +39,24 @@ namespace SiteECommerce.Migrations
                 "dbo.Commandes",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        Quantite = c.Int(nullable: false),
-                        PrixTotal = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        IdCommande = c.Int(nullable: false, identity: true),
                         IdClient = c.Int(),
+                        IdPanier = c.Int(),
                         MoyenPaiement = c.String(),
                         PaiementValid = c.Boolean(),
                         Discriminator = c.String(nullable: false, maxLength: 128),
                         Client_Id = c.Int(),
+                        Produit_IdProduit = c.Int(),
                     })
-                .PrimaryKey(t => t.Id)
+                .PrimaryKey(t => t.IdCommande)
                 .ForeignKey("dbo.Clients", t => t.Client_Id)
                 .ForeignKey("dbo.Clients", t => t.IdClient)
+                .ForeignKey("dbo.Paniers", t => t.IdPanier)
+                .ForeignKey("dbo.Produits", t => t.Produit_IdProduit)
                 .Index(t => t.IdClient)
-                .Index(t => t.Client_Id);
+                .Index(t => t.IdPanier)
+                .Index(t => t.Client_Id)
+                .Index(t => t.Produit_IdProduit);
             
             CreateTable(
                 "dbo.Clients",
@@ -61,11 +65,8 @@ namespace SiteECommerce.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Prenom = c.String(nullable: false),
                         Nom = c.String(nullable: false),
-                        Email = c.String(nullable: false),
-                        AdresseLivraison = c.String(),
+                        AdresseLivraison = c.String(nullable: false),
                         AdresseFacturation = c.String(nullable: false),
-                        Login = c.String(nullable: false),
-                        Password = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -84,6 +85,31 @@ namespace SiteECommerce.Migrations
                 .ForeignKey("dbo.Produits", t => t.IdProduit, cascadeDelete: true)
                 .Index(t => t.IdClient)
                 .Index(t => t.IdProduit);
+            
+            CreateTable(
+                "dbo.Paniers",
+                c => new
+                    {
+                        IdPanier = c.Int(nullable: false, identity: true),
+                        QuantitePanier = c.Int(nullable: false),
+                        PrixTotalPanier = c.Decimal(nullable: false, precision: 18, scale: 2),
+                    })
+                .PrimaryKey(t => t.IdPanier);
+            
+            CreateTable(
+                "dbo.LignePaniers",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Quantite = c.Int(nullable: false),
+                        Produit_IdProduit = c.Int(),
+                        Panier_IdPanier = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Produits", t => t.Produit_IdProduit)
+                .ForeignKey("dbo.Paniers", t => t.Panier_IdPanier)
+                .Index(t => t.Produit_IdProduit)
+                .Index(t => t.Panier_IdPanier);
             
             CreateTable(
                 "dbo.Fournisseurs",
@@ -173,19 +199,6 @@ namespace SiteECommerce.Migrations
                 .Index(t => t.UserId);
             
             CreateTable(
-                "dbo.CommandeProduits",
-                c => new
-                    {
-                        Commande_Id = c.Int(nullable: false),
-                        Produit_IdProduit = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.Commande_Id, t.Produit_IdProduit })
-                .ForeignKey("dbo.Commandes", t => t.Commande_Id, cascadeDelete: true)
-                .ForeignKey("dbo.Produits", t => t.Produit_IdProduit, cascadeDelete: true)
-                .Index(t => t.Commande_Id)
-                .Index(t => t.Produit_IdProduit);
-            
-            CreateTable(
                 "dbo.FournisseurProduits",
                 c => new
                     {
@@ -209,31 +222,34 @@ namespace SiteECommerce.Migrations
             DropForeignKey("dbo.Produits", "IdMarque", "dbo.Marques");
             DropForeignKey("dbo.FournisseurProduits", "Produit_IdProduit", "dbo.Produits");
             DropForeignKey("dbo.FournisseurProduits", "Fournisseur_Idfournisseur", "dbo.Fournisseurs");
-            DropForeignKey("dbo.CommandeProduits", "Produit_IdProduit", "dbo.Produits");
-            DropForeignKey("dbo.CommandeProduits", "Commande_Id", "dbo.Commandes");
+            DropForeignKey("dbo.Commandes", "Produit_IdProduit", "dbo.Produits");
+            DropForeignKey("dbo.Commandes", "IdPanier", "dbo.Paniers");
             DropForeignKey("dbo.Commandes", "IdClient", "dbo.Clients");
             DropForeignKey("dbo.Commandes", "Client_Id", "dbo.Clients");
+            DropForeignKey("dbo.LignePaniers", "Panier_IdPanier", "dbo.Paniers");
+            DropForeignKey("dbo.LignePaniers", "Produit_IdProduit", "dbo.Produits");
             DropForeignKey("dbo.Commentaires", "IdProduit", "dbo.Produits");
             DropForeignKey("dbo.Commentaires", "IdClient", "dbo.Clients");
             DropForeignKey("dbo.Produits", "IdCategorie", "dbo.Categories");
             DropIndex("dbo.FournisseurProduits", new[] { "Produit_IdProduit" });
             DropIndex("dbo.FournisseurProduits", new[] { "Fournisseur_Idfournisseur" });
-            DropIndex("dbo.CommandeProduits", new[] { "Produit_IdProduit" });
-            DropIndex("dbo.CommandeProduits", new[] { "Commande_Id" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.LignePaniers", new[] { "Panier_IdPanier" });
+            DropIndex("dbo.LignePaniers", new[] { "Produit_IdProduit" });
             DropIndex("dbo.Commentaires", new[] { "IdProduit" });
             DropIndex("dbo.Commentaires", new[] { "IdClient" });
+            DropIndex("dbo.Commandes", new[] { "Produit_IdProduit" });
             DropIndex("dbo.Commandes", new[] { "Client_Id" });
+            DropIndex("dbo.Commandes", new[] { "IdPanier" });
             DropIndex("dbo.Commandes", new[] { "IdClient" });
             DropIndex("dbo.Produits", new[] { "IdCategorie" });
             DropIndex("dbo.Produits", new[] { "IdMarque" });
             DropTable("dbo.FournisseurProduits");
-            DropTable("dbo.CommandeProduits");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
@@ -241,6 +257,8 @@ namespace SiteECommerce.Migrations
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Marques");
             DropTable("dbo.Fournisseurs");
+            DropTable("dbo.LignePaniers");
+            DropTable("dbo.Paniers");
             DropTable("dbo.Commentaires");
             DropTable("dbo.Clients");
             DropTable("dbo.Commandes");

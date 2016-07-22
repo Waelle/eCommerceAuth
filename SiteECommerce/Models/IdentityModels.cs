@@ -21,6 +21,8 @@ namespace SiteECommerce.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        internal object Panier;
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -37,6 +39,7 @@ namespace SiteECommerce.Models
         public DbSet<Fournisseur> Fournisseurs { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Commande> Commandes { get; set; }
+        public DbSet<Panier> Paniers { get; set; }
         public DbSet<Facture> Factures { get; set; }
         public DbSet<Commentaire> Commentaires { get; set; }
     }

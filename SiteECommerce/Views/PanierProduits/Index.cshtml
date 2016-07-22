@@ -35,35 +35,37 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Categorie.NomCategorie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Marque.NomMarque)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomProduit)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImgProduit)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrixProduit)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DescriptionProduit)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantite)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id=item.IdProduit }) |
-            @*@Html.ActionLink("Ajouter au Panier", "Create", new { id = item.IdProduit })*@          
-            @Html.ActionLink("Ajouter au Panier", "AjouterProduit", new { id = item.IdProduit })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categorie.NomCategorie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marque.NomMarque)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomProduit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImgProduit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrixProduit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescriptionProduit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantite)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.IdProduit }) |
+                @*@Html.ActionLink("Ajouter au Panier", "Create", new { id = item.IdProduit })*@
+                @Html.ActionLink("Ajouter au Panier", "AjouterAuPanier", new { idProduit = item.IdProduit, quantite = 1 })
+
+            </td>
+        </tr>
+    }
 
 </table>

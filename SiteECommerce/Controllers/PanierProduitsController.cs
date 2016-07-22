@@ -10,12 +10,13 @@ using SiteECommerce.DAL;
 using SiteECommerce.Metier;
 using System.Data.Entity.Core;
 using System.Drawing;
+using SiteECommerce.Models;
 
 namespace SiteECommerce.Controllers
 {
     public class PanierProduitsController : Controller
     {
-        private SiteECommerceDbContext db = new SiteECommerceDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: PanierProduits
         public ActionResult Index()
@@ -66,27 +67,66 @@ namespace SiteECommerce.Controllers
             return View(produit);
         }
 
-        public ActionResult AjouterProduit(int? id)
+        public ActionResult AjouterAuPanier(int? idProduit, int? quantite)
         {
-            if (id == null)
+            if (!idProduit.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Commande commande = (Commande)Session["panier"];
-            if (commande == null)
+
+            if (!quantite.HasValue)
             {
-                commande = new Commande();
-                Session["panier"] = commande;
+                quantite = 1;
             }
 
-            commande.AjouterACommande(db.Produits.Find(id));
-            db.Commandes.Add(commande);
+            Panier panier = (Panier)Session["panier"];
+            if (panier == null)
+            {
+                panier = new Panier();
+                Session["panier"] = panier;
+            }
+
+            Produit p = db.Produits.Find(idProduit);
+            panier.AjouterAuPanier(p, quantite.Value);
+            //db.Panier.Add(panier);
+
             db.SaveChanges();
-            
-                return RedirectToAction("Index", "Commandes");
-           
+
+            return RedirectToAction("Index", "Paniers");
+
         }
-         
+
+
+
+        //public void AjouterAuPanier(Produit Produits, int quantite)
+        //{
+
+        //    LignePanier p = Produits.FirstOrDefault(lp => lp.Produit.IdProduit == produit.IdProduit);
+        //    if (p != null)
+        //    {
+        //        p.Quantite += p.Quantite;
+        //        produit.Quantite -= quantite;
+        //        PrixTotalPanier += quantite * produit.PrixProduit;
+        //    }
+        //    else
+        //    {
+        //        Produits.Add(new LignePanier { LignePanier = produit, Quantite = quantite });
+        //        produit.Quantite -= quantite;
+        //        p.Quantite += p.Quantite;
+        //        PrixTotalPanier += quantite * produit.PrixProduit;
+        //    }
+
+
+        //    //Produits.Add(produit);
+        //    //// calcule du prix total
+        //    //produit.Quantite -= quantite;
+        //    //PrixTotalPanier += quantite * produit.PrixProduit;
+
+
+        //}
+
+
+
         //public ActionResult DisplayId(int? id)
         //{
         //    ViewBag.Id = id;

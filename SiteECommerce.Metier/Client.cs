@@ -18,21 +18,11 @@ namespace SiteECommerce.Metier
         [Required]
         public string Nom { get; set; }
 
-        [DataType(DataType.EmailAddress)]
         [Required]
-        public string Email { get; set; }
-
         public string AdresseLivraison { get; set; }
 
         [Required]
         public string AdresseFacturation { get; set; }
-
-        [Required]
-        public string Login { get; set; }
-
-        [DataType(DataType.Password)]
-        [Required]
-        public string Password { get; set; }
 
         public virtual ICollection<Facture> Factures { get; set; }
 

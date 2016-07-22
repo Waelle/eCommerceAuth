@@ -1,0 +1,34 @@
+﻿@model SiteECommerce.Metier.Panier
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+@Html.DisplayFor(m => m.PrixTotalPanier)
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantitePanier)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrixTotalPanier)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.LignePaniers) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Produit.NomProduit)
+        </td>
+    </tr>
+}
+
+</table>

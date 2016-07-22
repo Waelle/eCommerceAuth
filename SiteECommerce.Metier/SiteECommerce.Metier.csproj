@@ -95,7 +95,9 @@
     <Compile Include="Commentaire.cs" />
     <Compile Include="Facture.cs" />
     <Compile Include="Fournisseur.cs" />
+    <Compile Include="LignePanier.cs" />
     <Compile Include="Marque.cs" />
+    <Compile Include="Panier.cs" />
     <Compile Include="Produit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

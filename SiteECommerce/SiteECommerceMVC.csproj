@@ -211,19 +211,22 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
-    <Compile Include="Controllers\CommandesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MarquesController.cs" />
     <Compile Include="Controllers\PanierProduitsController.cs" />
-    <Compile Include="Controllers\ProduitsController.cs" />
+    <Compile Include="Controllers\PaniersController.cs" />
     <Compile Include="DAL\SiteECommerceDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201607210811148_initial.cs" />
-    <Compile Include="Migrations\201607210811148_initial.Designer.cs">
-      <DependentUpon>201607210811148_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201607211331374_Panier.cs" />
+    <Compile Include="Migrations\201607211331374_Panier.Designer.cs">
+      <DependentUpon>201607211331374_Panier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607220943509_toto.cs" />
+    <Compile Include="Migrations\201607220943509_toto.Designer.cs">
+      <DependentUpon>201607220943509_toto.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -296,11 +299,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Produits\Create.cshtml" />
-    <Content Include="Views\Produits\Delete.cshtml" />
-    <Content Include="Views\Produits\Details.cshtml" />
-    <Content Include="Views\Produits\Edit.cshtml" />
-    <Content Include="Views\Produits\Index.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
     <Content Include="Views\Categories\Delete.cshtml" />
     <Content Include="Views\Categories\Details.cshtml" />
@@ -316,16 +314,16 @@
     <Content Include="Views\Marques\Details.cshtml" />
     <Content Include="Views\Marques\Edit.cshtml" />
     <Content Include="Views\Marques\Index.cshtml" />
-    <Content Include="Views\Commandes\Create.cshtml" />
-    <Content Include="Views\Commandes\Delete.cshtml" />
-    <Content Include="Views\Commandes\Details.cshtml" />
-    <Content Include="Views\Commandes\Edit.cshtml" />
-    <Content Include="Views\Commandes\Index.cshtml" />
     <Content Include="Views\PanierProduits\Create.cshtml" />
     <Content Include="Views\PanierProduits\Delete.cshtml" />
     <Content Include="Views\PanierProduits\Details.cshtml" />
     <Content Include="Views\PanierProduits\Edit.cshtml" />
     <Content Include="Views\PanierProduits\Index.cshtml" />
+    <Content Include="Views\Paniers\Create.cshtml" />
+    <Content Include="Views\Paniers\Delete.cshtml" />
+    <Content Include="Views\Paniers\Details.cshtml" />
+    <Content Include="Views\Paniers\Edit.cshtml" />
+    <Content Include="Views\Paniers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -349,8 +347,11 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201607210811148_initial.resx">
-      <DependentUpon>201607210811148_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607211331374_Panier.resx">
+      <DependentUpon>201607211331374_Panier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607220943509_toto.resx">
+      <DependentUpon>201607220943509_toto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

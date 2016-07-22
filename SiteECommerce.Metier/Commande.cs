@@ -6,37 +6,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace SiteECommerce.Metier
 {
     public class Commande
     {
-        public Commande()
-        {
-            Produits = new List<Produit>();
-        }
+             
         [Key]
-        public int Id { get; set; }
-        public int Quantite { get; set; }
-        public decimal PrixTotal { get; set; }
-
+        public int IdCommande { get; set; }
+        
         [ForeignKey("Client")]
         public int? IdClient { get; set; }
         public virtual Client Client { get; set; }
 
+        [ForeignKey("Panier")]
+        public int? IdPanier { get; set; }
+        public virtual Panier Panier { get; set; }
+               
 
-        public virtual ICollection<Produit> Produits { get; set; }
-
-        public void AjouterACommande(Produit produit)
-        {
-            Produits.Add(produit);
-            //Produits.Add(produit);
-            /// calcule du prix total 
-            Quantite++;
-            produit.Quantite--;
-            PrixTotal = Quantite * produit.PrixProduit;
-           
-
-        }
+        
     }
 }
 
